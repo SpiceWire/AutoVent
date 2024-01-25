@@ -1,0 +1,113 @@
+//
+// Running this sketch operates a fresh air vent. The vent resupplies fresh air for exhaust fans and combustion air.
+// The vent is composed of a sliding door driven by a lead screw connected to a reversible motor.
+
+// This sketch demonstrates that the relays and motor are working together properly. The sketch moves the vent door
+// in the direction of "open" for a few seconds, then reverses and moves the door in the direction of "close"
+// for a few seconds. The door's movement has no connection with the presence or absence of a call for heat. 
+
+// Of note, this sketch does NOT use microswitches to prevent overtravel.  Vent door overtravel is only 
+// prevented by two roller microswitches wired in series with the relays. 
+
+// PIND is the input register for port D of the Arduino. In this sketch, Serial.println(PIND, BIN) prints out the binary state of
+// each register in descending order (7 to 0). As the sketch uses pins 7-3, this prints out the Arduino's "state" of the pins,
+// showing whether the Arduino is reading each pin as high (1) or low (0). This can be helpful for debugging electrical issues.
+
+// The pins for limit switches and heat call are not being used to determine the movement of the door.
+// They are initialized in the sketch so that their state can be read by PIND and a multimeter in order to
+// evaluate possible electromagnetic interference (EMI) from the EM fields of the motor, and to test the 
+// switches for correct operation. While evaluating EMI, the user may need to change INPUT_PULLUP to 
+// INPUT (and add resistors accordingly) on the pins.    
+
+// The 5v relays energzize when sent a LOW signal.
+
+
+//vars
+//pins
+const int maxOpenLimitSw = 7;    // Max open limit switch. Switch (NO) closes when vent is open at max. Pin is HIGH when vent is open, LOW when vent is closed.
+const int maxClosedLimitSw = 6;  // Max closed limit switch. Switch (NO) closes when vent is closed at max. Pin is HIGH when vent is closed, LOW when vent is open.
+const int rlyOpenVent = 5;       // Relay control to open the vent. LOW pin energizes the relay, HIGH pin de-energizes the relay
+const int rlyCloseVent = 4;      // Relay control to close the vent. LOW pin energizes the relay, HIGH pin de-energizes the relay.
+const int heatCallPin = 3;       // Digital pin number, input from heat call relay. Pin is LOW when there is a heat call, HIGH when no heat call.
+
+
+// values
+int travelTime = 2000;                // Time (milliseconds) the door travels in each direction.
+int delayTime = 4000;                 // Time (milliseconds) the door is motionless before traveling in the opposite direction.
+
+
+
+
+void setup() {
+
+    pinMode(heatCallPin, INPUT_PULLUP);       // LOW when there is a call from the furnace for heat, HIGH when no call
+    pinMode(maxOpenLimitSw, INPUT_PULLUP);    // HIGH when vent is fully open, else LOW due to internal pullup resistor
+    pinMode(maxClosedLimitSw, INPUT_PULLUP);  // HIGH when vent is fully closed, else LOW due to internal pullup resistor
+ 
+
+    pinMode(rlyOpenVent, OUTPUT);
+    pinMode(rlyCloseVent, OUTPUT);
+
+    digitalWrite(rlyCloseVent, HIGH); // Keep relay in the NO position
+    digitalWrite(rlyOpenVent, HIGH);  // Keep relay in the NO position
+
+    
+    Serial.begin(9600); // initialize serial port for debugging
+    Serial.println("Serial Open.");
+    Serial.print ("Starting heatCall is  ");
+    Serial.println (digitalRead(heatCallPin));
+    Serial.print ("Start MaxOpen switch is ");
+    Serial.println (digitalRead(maxOpenLimitSw));
+    Serial.print ("Start MaxClosed closed is ");
+    Serial.println (digitalRead(maxClosedLimitSw));
+    Serial.println ("digital 7 to 0 , 8-13 :");
+    Serial.print(PIND, BIN);
+    Serial.print("  ");
+    Serial.println (PINB, BIN);
+    delay(2000);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+    Serial.println ("Open the vent");
+    digitalWrite(rlyOpenVent, LOW);  // Open vent
+    delay(travelTime);
+    digitalWrite(rlyOpenVent, HIGH);  // Stop opening
+    Serial.println ("Vent is open");
+    delay(delayTime);
+
+    Serial.println ("Close the vent");
+    digitalWrite(rlyCloseVent, LOW); // Close vent
+    delay(travelTime);    
+    digitalWrite(rlyCloseVent, HIGH); // Stop closing
+    Serial.println("Prints input register of portD, port B");
+    Serial.println ("digital 7 to 0 , 8-13 :");
+    Serial.print(PIND, BIN);
+    Serial.print("  ");
+    Serial.println (PINB, BIN);
+    Serial.print(PIND, BIN);
+    Serial.print("  ");
+    Serial.println (PINB, BIN);
+    Serial.print(PIND, BIN);
+    Serial.print("  ");
+    Serial.println (PINB, BIN);
+    Serial.print(PIND, BIN);
+    Serial.print("  ");
+    Serial.println (PINB, BIN);
+    Serial.print(PIND, BIN);
+    Serial.print("  ");
+    Serial.println (PINB, BIN);
+    Serial.print(PIND, BIN);
+    Serial.print("  ");
+    Serial.println (PINB, BIN);
+    Serial.print(PIND, BIN);
+    Serial.print("  ");
+    Serial.println (PINB, BIN);
+    Serial.print(PIND, BIN);
+    Serial.print("  ");
+    Serial.println (PINB, BIN);
+
+    delay(delayTime);
+        
+}
