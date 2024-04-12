@@ -35,7 +35,7 @@ to "Heat" when manually operated.
 
 ![VentHardwarePic](Images/VentHardwarePic.jpg)
 
-##Materials Used:
+## Materials Used:
 Reversible motor from paper shredder 
 Lead screw (linear actuator) from power reclining sofa
 Angle iron from bedframe
@@ -50,7 +50,7 @@ Arduino
 Various wood pieces
 Misc electrical supplies (wire caps, solder, shrink tubing, etc.)
 
-##Design notes:
+## Design notes:
 The project used a paper shredder motor to drive the lead screw because 1) it was available 2) it has sufficient torque
 3) it is already reversible. 
 The software-based limit switches are mounted onto the aluminum channel. The channel is firmly seated on the angle iron by friction
