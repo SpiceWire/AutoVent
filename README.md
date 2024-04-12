@@ -38,23 +38,22 @@ to "Heat" when manually operated.
 ![VentHardwarePic](Images/VentHardwarePic.jpg)
 
 ## Materials Used:
-Reversible motor from paper shredder 
-Lead screw (linear actuator) from power reclining sofa
-Angle iron from bedframe
-Aluminum channel from window frame
-Wire coupler terminal butt connector with set screws
-4 roller switches
-Composite decking for vent door
-2 flexible polyethelene cutting boards for door frame
-Arduino
-2-channel relay switch
-24 VAC relay
-Various wood pieces
-Misc electrical supplies (wire caps, solder, shrink tubing, etc.)
+* Reversible motor from paper shredder 
+* Lead screw (linear actuator) from power reclining sofa
+* Angle iron from bedframe
+* Aluminum channel from window frame
+* Wire coupler terminal butt connector with set screws
+* 4 roller switches
+* Composite decking for vent door
+* 2 flexible polyethelene cutting boards for door frame
+* Arduino
+* 2-channel relay switch
+* 24 VAC relay
+* Various wood pieces
+* Misc electrical supplies (wire caps, solder, shrink tubing, etc.)
 
 ## Design notes:
-* The project used a paper shredder motor to drive the lead screw because 1) it was available 2) it has sufficient torque
-3) it is already reversible.
+* The project used a paper shredder motor to drive the lead screw because it was available, has sufficient torque, and is already reversible.
   
 * The software-based limit switches are mounted onto the aluminum channel. The channel is firmly seated on the angle iron by friction
 yet is still adjustable horizontally.
