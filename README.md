@@ -32,3 +32,33 @@ Arduino supplies 5v VCC to the relays.
 The signal from the furnace is sent from a solenoid relay, which can send "dirty" signals that need debouncing.
 Debouncing time is lengthy in order to account for situations where the thermostat is accidentally switched
 to "Heat" when manually operated.
+
+![VentHardwarePic](Images/VentHardwarePic.jpg)
+
+##Materials Used:
+Reversible motor from paper shredder 
+Lead screw (linear actuator) from power reclining sofa
+Angle iron from bedframe
+Aluminum channel from window frame
+Wire coupler terminal butt connector with set screws
+4 roller switches
+Composite decking for vent door
+2 flexible polyethelene cutting boards for door frame
+Arduino
+2-channel relay switch
+24 VAC relay
+Various wood pieces
+Misc electrical supplies (wire caps, solder, shrink tubing, etc.)
+
+##Design notes:
+The project used a paper shredder motor to drive the lead screw because 1) it was available 2) it has sufficient torque
+3) it is already reversible. 
+The software-based limit switches are mounted onto the aluminum channel. The channel is firmly seated on the angle iron by friction
+yet is still adjustable horizontally. The limit switches are vertically adjusted by the hex nuts and threaded rod to which the
+angle iron is mounted.
+The outer frame for the sliding door is made from plywood lined with polyethelene to reduce friction. The design did not have
+any noticable air leaks or condensation issues. 
+The motor shaft and lead screw were joined together by a wire coupler with set screws.
+Reducing the electrical noise from the shredder motor was non-trivial. At various stages, the design used pull-up and/or pull-down resistors to
+combat electrical noise. 
+
